@@ -10,45 +10,8 @@ import java.util.Scanner;
  */
 public class Nod 
 {
-	private int _value;
-	private Nod _next;
-	private Nod first;
-	
-	/**
-	 * This is a setter for value.
-	 * @param value
-	 */
-	public void setValue(int value)
-	{
-		this._value = value;
-	}
-	
-	/**
-	 * This this is a setter for the Nod.
-	 * @param next
-	 */
-	public void setNext(Nod next)
-	{
-		this._next = next;
-	}
-	
-	/**
-	 * This is a getter for the value.
-	 * @return
-	 */
-	public int getValue()
-	{
-		return this._value;
-	}
-	
-	/**
-	 * This is a getter for the Nod.
-	 * @return
-	 */
-	public Nod getNext()
-	{
-		return this._next;
-	}
+	public int _value;
+	public Nod _next;
 	
 	/**
 	 * This is an empty constructor.
@@ -76,8 +39,8 @@ public class Nod
 	 */
 	public Nod(Nod toAdd)
 	{
-		this._next = toAdd.getNext();
-		this._value = toAdd.getValue();
+		this._next = toAdd._next;
+		this._value = toAdd._value;
 	}
 	
 	/**
@@ -85,28 +48,28 @@ public class Nod
 	 * parameter to the list.
 	 * @param toAdd
 	 */
-	public void addToList(Nod toAdd)
+	public void addToList(Nod first, Nod toAdd)
 	{
-		Nod parser = new Nod(this.first);
+		Nod parser = new Nod(first);
 		
-		while(parser.getNext() != null)
+		while(parser._next != null)
 		{
-			parser.setNext(parser.getNext());
+			parser._next = parser._next;
 		}
-		parser.setNext(toAdd);
+		parser._next = toAdd;
 	}
 	
 	/**
 	 * This function prints out the list.
 	 */
-	public void printList()
+	public void printList(Nod first)
 	{
 		System.out.println("The list: ");
-		Nod parser = new Nod(this.first);
+		Nod parser = new Nod(first);
 		
-		while(parser.getNext()!=null)
+		while(parser._next!=null)
 		{
-			System.out.print(parser.getValue() + " ");
+			System.out.print(parser._value + " ");
 		}
 	}
 	
@@ -119,19 +82,22 @@ public class Nod
 		Nod first = new Nod(value);
 		Nod middle = new Nod();
 		
+		first.printList(first);
+		
 		System.out.println("Number of elements in the list");
 		int nNumberOfElements = sc.nextInt() - 1;
 		
 		for (int i = 1; i <= nNumberOfElements; i++)
 		{
-			System.out.println("Insert element number" + i + " : ");
-			middle.setValue(sc.nextInt());
-			middle.setNext(null);
-			first.addToList(middle);
-			System.out.println("Succesfully added the element");
+			System.out.println("Insert element number " + i + " : ");
+			middle._value = sc.nextInt();
+			middle._next = null;
+			first.addToList(first, middle);;
+			System.out.println("Succesfully added the 1" +"element");
+			first.printList(first);
 		}
 		
-		first.printList();
+		first.printList(first);
 
 	}
 
