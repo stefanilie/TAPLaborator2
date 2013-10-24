@@ -16,8 +16,8 @@ public class Prob3till6 {
 		System.out.println("Insert char to search number of appearences");
 		String charToSearch = sc.nextLine();
 		
-		int nFirstPosition = 0;
-		int nCounterOfApps = 0;
+		int nFirstPosition = strToAnalyse.indexOf(charToSearch);
+		int nCounterOfApps = 1;
 		while (nFirstPosition != -1)
 		{
 		 	nFirstPosition = strToAnalyse.indexOf(charToSearch, nFirstPosition+charToSearch.length());

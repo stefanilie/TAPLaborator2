@@ -65,11 +65,11 @@ public class Nod
 	public void printList(Nod first)
 	{
 		System.out.println("The list: ");
-		Nod parser = new Nod(first);
 		
-		while(parser._next!=null)
+		while(first._value != 0)
 		{
-			System.out.print(parser._value + " ");
+			System.out.print(first._value + " ");
+			 first = first._next; 
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class Nod
 		}
 		
 		first.printList(first);
+		System.out.println("Scenario ended.");
 
 	}
-
 }

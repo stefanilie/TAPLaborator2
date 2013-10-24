@@ -20,7 +20,7 @@ public class ComplexNumber {
 	 */
 	public void showNumber()
 	{
-		System.out.println(this._nReal + "+" + this._nImaginary + "i");
+		System.out.print(this._nReal + "+" + this._nImaginary + "i");
 	}
 	
 	/**
@@ -126,6 +126,9 @@ public class ComplexNumber {
 	 */
 	public static void main(String[] args)
 	{
+		/*
+		 * Script for Lab 1.
+		 * 
 		ComplexNumber objFirst, objSecond;
 		objFirst = new ComplexNumber(10, 5);
 		objSecond = new ComplexNumber(20, 10);
@@ -175,7 +178,39 @@ public class ComplexNumber {
 		ComplexNumber obj3 = new ComplexNumber(3, 4);
 		System.out.println("The third");
 		obj3.showNumber();
+		*/
+		//Problem no 2 from the second laboratory.
+		ComplexNumber[][] arrComplex = new ComplexNumber[2][2];
+		int nArgsCounter = 0;
+		for(int i = 0; i<2; i++)
+		{
+			for (int j = 0; j<2; j++)
+			{
+				arrComplex[i][j] = new ComplexNumber(Integer.parseInt(args[nArgsCounter]), Integer.parseInt(args[nArgsCounter+1]));
+				nArgsCounter++;
+			}
+		}
 		
+		for (int i = 0; i<2; i++)
+		{
+			System.out.println();
+			for (int j = 0; j<2; j++)
+			{
+				arrComplex[i][j].showNumber();
+				System.out.print(" ");
+			}
+		}
+		
+		for (int i = 0; i<2; i++)
+		{
+			for (int j = 0; j<2; j++)
+			{
+				if(i!=0 && j!=0)
+					arrComplex[0][0].sum(arrComplex[i][j]);
+			}
+		}
+		System.out.println("\nSuma: ");
+		arrComplex[0][0].showNumber();
 	}
 
 }
