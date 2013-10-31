@@ -33,6 +33,8 @@ public class Nod
 	{
 		this._value = value;
 		this._next = null;
+		this._first = this;
+		this._last = this;
 	}
 	
 	/**
@@ -44,7 +46,6 @@ public class Nod
 		this._next = toAdd._next;
 		this._value = toAdd._value;
 	}
-	public static void main(String[] args){}
 }
 
 class List
