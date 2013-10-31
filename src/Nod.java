@@ -12,6 +12,25 @@ public class Nod
 {
 	public int _value;
 	public Nod _next;
+	public static Nod _first, _last;
+	
+	/**
+	 * This is a getter for the _last static field.
+	 * @return
+	 */
+	public Nod getLast()
+	{
+		return this._last;
+	}
+	
+	/**
+	 * This is a getter for _first satic field.
+	 * @return
+	 */
+	public Nod getFirst()
+	{
+		return this._first;
+	}
 	
 	/**
 	 * This is an empty constructor.
@@ -31,6 +50,8 @@ public class Nod
 	{
 		this._value = value;
 		this._next = null;
+		this._first = this;
+		this._last = this;
 	}
 	
 	/**
@@ -48,15 +69,16 @@ public class Nod
 	 * parameter to the list.
 	 * @param toAdd
 	 */
-	public void addToList(Nod first, Nod toAdd)
+	public void addToList(Nod toAdd)
 	{
-		Nod parser = new Nod(first);
+		Nod parser = new Nod(this._first);
 		
-		while(parser._next != null)
+		while(parser != this._last)
 		{
-			parser._next = parser._next;
+			parser = parser._next;
 		}
 		parser._next = toAdd;
+		this._last = parser._next;
 	}
 	
 	/**
@@ -69,7 +91,10 @@ public class Nod
 		while(first._value != 0)
 		{
 			System.out.print(first._value + " ");
-			 first = first._next; 
+			if(first._next == null)
+				break;
+			else
+				first = first._next; 
 		}
 	}
 	
@@ -92,7 +117,7 @@ public class Nod
 			System.out.println("Insert element number " + i + " : ");
 			middle._value = sc.nextInt();
 			middle._next = null;
-			first.addToList(first, middle);;
+			first.addToList(middle);;
 			System.out.println("Succesfully added the 1" +"element");
 			first.printList(first);
 		}
